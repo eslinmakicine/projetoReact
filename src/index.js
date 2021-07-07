@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App title="Hello" user="Gama Academy" /> {/* Essas props como "title" sao utilizadas no app.js, pra isso precisa colocar props quando chama a função App */}
   </React.StrictMode>,
   document.getElementById('root')
 );
