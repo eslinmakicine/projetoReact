@@ -1,3 +1,4 @@
+import * as S from './styled'; //dando variavel e importando o styled.js
 
 import React, {useState} from 'react';
 import axios from 'axios';
@@ -10,13 +11,13 @@ function handlePesquisa() {
 }  
 
   return (
-    <> {/* fragment (<> </>) podem substituior div, pois div pode dar erro quando nao é a ideia ter uma div. 
+    <S.Container> {/* fragment (<> </>) podem substituior div, pois div pode dar erro quando nao é a ideia ter uma div. 
            Pois o react não permite ter vários elementos "soltos". Dessa forma, pra nao especificar qual tag é, 
            é utilizado esse fragment 
         <h1>{props.title}, {props.user}</h1> */} {/* aqui é colocado as props que foram citadas no index.js */}
-        <input className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} /> {/* o "e =>" significa o "evento". Utiliza ele pq pegar valores. O set altera o valor toda vez que o input é alterado */}
-        <button type="button" onClick={handlePesquisa}>Pesquisar</button> {/* o botão está chamando a função "handlePesquisa" quando é feito o click */}
-    </>
+        <S.Input className="usuarioInput" placeholder="Usuário" value={usuario} onChange={e => setUsuario(e.target.value)} /> {/* o "e =>" significa o "evento". Utiliza ele pq pegar valores. O set altera o valor toda vez que o input é alterado */}
+        <S.Button type="button" onClick={handlePesquisa}>Pesquisar</S.Button> {/* o botão está chamando a função "handlePesquisa" quando é feito o click */}
+    </S.Container>
 );
 }
 
