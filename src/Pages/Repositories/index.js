@@ -9,12 +9,13 @@ export default function Repositories() {
         repositoriesName = JSON.parse(repositoriesName); //transforma num objeto
         console.log(repositoriesName);
         setRepositories(repositoriesName); //vai setar o setRepositories passando o repositoriesName
-        localStorage.clear();
+ //      localStorage.clear();
     }, []); //se nao passar nenhum argumento em [], ele vai monitorar quando o componente for montado(renderizado)
 
     return (
         <S.Container>
         <S.Title>Repositório</S.Title>  {/* Antes era <h3>Repositório</h3>, agora o S.Title diz respeito ao S que foi a variavel citada pelo import do styled. E title foi o nome do elemento cetado no arquivo styled.js  */}
+        
         <S.List>
            { repositories.map(repository => {
                return (
@@ -22,6 +23,7 @@ export default function Repositories() {
                ) 
            })}
         </S.List>
+        <S.LinkHome to="/">Voltar</S.LinkHome> {/* Dessa forma ele não vai dar o refresh na pagina. Se utilizasse a ancora do html daria refresh, e esse não é o conceito de SPA  */} 
         </S.Container>
     )
 }
