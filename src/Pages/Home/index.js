@@ -7,7 +7,14 @@ function App(props) { //dessa forma ele pega a propriedade title lá do arquivo 
   const [usuario, setUsuario] = useState(''); //referente a estado, estudar mais sobre
 
 function handlePesquisa() {
-    axios.get(`https://api.github.com/users/${usuario}/repos`).then(response => console.log(response.data));
+    axios.get(`https://api.github.com/users/${usuario}/repos`).then(response => {
+      const repositories = response.data; //pega somente uma parte do response
+      const repositoriesName = []; //cria um array para posteriormente salvar o nome dos repositorios
+      repositories.map((repository) => { //mapear o response.data, e o "repository" é o resultado desse mapeamento
+        repositoriesName.push(repository.name); //push vai popular o array somente com os repository.name
+      });
+      localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName)); //vai salvar os repositoriesName no armazenamento do navegador. No navegador, em console > application > Local Storage > estará a variável repositoriesName com os valores armazenados
+    });
 }  
 
   return (
