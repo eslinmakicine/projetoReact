@@ -1,9 +1,10 @@
 import * as S from './styled'; //dando variavel e importando o styled.js
-
 import React, {useState} from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'; //navegação de páginas
 
 function App(props) { //dessa forma ele pega a propriedade title lá do arquivo index.js
+  const history = useHistory();
   const [usuario, setUsuario] = useState(''); //referente a estado, estudar mais sobre
 
 function handlePesquisa() {
@@ -14,6 +15,7 @@ function handlePesquisa() {
         repositoriesName.push(repository.name); //push vai popular o array somente com os repository.name
       });
       localStorage.setItem('repositoriesName', JSON.stringify(repositoriesName)); //vai salvar os repositoriesName no armazenamento do navegador. No navegador, em console > application > Local Storage > estará a variável repositoriesName com os valores armazenados
+      history.push('/repositories'); //ao pesquisar o repositorio, é enviado para a page /repositories
     });
 }  
 

@@ -1,20 +1,26 @@
 import * as S from './styled'; //dando variavel e importando o styled.js
+import React, {useEffect, useState} from 'react';
 
 export default function Repositories() {
+    const [repositories, setRepositories] = useState([]); //define o estado. Pegando o valor do estado, e a função que vai setar o valor do estado. Inicialmente será um array vazio
+
+    useEffect(() => {
+        let repositoriesName = localStorage.getItem('repositoriesName'); //ele vai armazenas em repositoriesName o valor que está no localStorage
+        repositoriesName = JSON.parse(repositoriesName); //transforma num objeto
+        console.log(repositoriesName);
+        setRepositories(repositoriesName); //vai setar o setRepositories passando o repositoriesName
+        localStorage.clear();
+    }, []); //se nao passar nenhum argumento em [], ele vai monitorar quando o componente for montado(renderizado)
+
     return (
         <S.Container>
         <S.Title>Repositório</S.Title>  {/* Antes era <h3>Repositório</h3>, agora o S.Title diz respeito ao S que foi a variavel citada pelo import do styled. E title foi o nome do elemento cetado no arquivo styled.js  */}
         <S.List>
-            <S.ListItem>Nome Repositório 01 </S.ListItem>
-            <S.ListItem>Nome Repositório 02 </S.ListItem>
-            <S.ListItem>Nome Repositório 03 </S.ListItem>
-            <S.ListItem>Nome Repositório 04 </S.ListItem>
-            <S.ListItem>Nome Repositório 05 </S.ListItem>
-            <S.ListItem>Nome Repositório 06 </S.ListItem>
-            <S.ListItem>Nome Repositório 07 </S.ListItem>
-            <S.ListItem>Nome Repositório 08 </S.ListItem>
-            <S.ListItem>Nome Repositório 09 </S.ListItem>
-            <S.ListItem>Nome Repositório 10 </S.ListItem>
+           { repositories.map(repository => {
+               return (
+                   <S.ListItem> Repositório: {repository} </S.ListItem>
+               ) 
+           })}
         </S.List>
         </S.Container>
     )
