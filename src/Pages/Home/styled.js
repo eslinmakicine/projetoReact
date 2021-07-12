@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div ` 
-width: 100vw;
+export const ContainerHome = styled.div ` 
 height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+`
+export const Content = styled.div ` 
+width: 100vw;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -33,5 +39,13 @@ border-radius: 0 .25rem 0 .25rem;
     outline: none;
     box-shadow: none;
 
-
+}
 ` 
+
+export const ErrorMsg = styled.span`
+display: block;
+font-size: 0.70rem;
+color: red;
+font-weight: 600;
+margin-top: 1rem;
+`

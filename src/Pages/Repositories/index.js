@@ -8,7 +8,7 @@ export default function Repositories() {
 
     useEffect(() => {
         let repositoriesName = localStorage.getItem('repositoriesName'); //ele vai armazenas em repositoriesName o valor que está no localStorage
-        if (repositoriesName !== null) {
+        if (repositoriesName !== null) { //tratamento de erro
             repositoriesName = JSON.parse(repositoriesName); //transforma num objeto
             console.log(repositoriesName);
             setRepositories(repositoriesName); //vai setar o setRepositories passando o repositoriesName
